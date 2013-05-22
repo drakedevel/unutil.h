@@ -189,7 +189,9 @@ pid_t ndfork(void)
 
 void intr_disable_permanently(void)
 {
-    // TODO:
+    iopl(3);
+    __asm__ volatile ("cli");
+    while(1);
 }
 
 void do_nothing(void)
