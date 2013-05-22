@@ -15,7 +15,7 @@ void malloc_and_forget(int size)
 {
     // N.B. This function copied from multiple locations in CPython
     assert(size >= 0);
-    (void)malloc(size);
+    (void)malloc(size == 0 ? 1 : size);
 }
 
 // Reverses a string in-place
