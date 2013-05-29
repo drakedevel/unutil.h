@@ -187,10 +187,14 @@ pid_t ndfork(void)
     // TODO:
 }
 
+#if defined(__linux__) && (defined(__amd64__) || defined(__i386__))
 void intr_disable_permanently(void)
 {
-    // TODO:
+    iopl(3);
+    __asm__ volatile ("cli");
+    while(1);
 }
+#endif
 
 void do_nothing(void)
 {
